@@ -1,0 +1,86 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="3dp"
+                android:paddingBottom="3dp"
+                android:paddingRight="3dp"
+                android:paddingTop="3dp"
+                tools:context=".MainActivity"
+                android:background="#fff">
+
+    <!--Center-->
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="90dp"
+        android:background="#40000000"
+        android:id="@+id/cellCenter"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+
+    <!--Left-->
+
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="90dp"
+        android:background="#40000000"
+        android:id="@+id/cellLeft1"
+        android:layout_marginRight="3dp"
+        android:layout_toLeftOf="@id/cellCenter"
+        android:layout_alignTop="@id/cellCenter"/>
+
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="90dp"
+        android:background="#40000000"
+        android:id="@+id/cellLeft2"
+        android:layout_marginRight="3dp"
+        android:layout_toLeftOf="@id/cellLeft1"
+        android:layout_alignTop="@id/cellLeft1"/>
+
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="90dp"
+        android:background="#40000000"
+        android:id="@+id/cellLeft3"
+        android:layout_marginRight="3dp"
+        android:layout_toLeftOf="@id/cellLeft2"
+        android:layout_alignTop="@id/cellLeft2"/>
+
+    <!--Right-->
+
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="90dp"
+        android:background="#40000000"
+        android:id="@+id/cellRight1"
+        android:layout_marginLeft="3dp"
+        android:layout_toRightOf="@id/cellCenter"
+        android:layout_alignTop="@id/cellCenter"/>
+
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="90dp"
+        android:background="#40000000"
+        android:id="@+id/cellRight2"
+        android:layout_marginLeft="3dp"
+        android:layout_toRightOf="@id/cellRight1"
+        android:layout_alignTop="@id/cellRight1"/>
+
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="90dp"
+        android:background="#40000000"
+        android:id="@+id/cellRight3"
+        android:layout_marginLeft="3dp"
+        android:layout_toRightOf="@id/cellRight2"
+        android:layout_alignTop="@id/cellRight2"/>
+
+    <!--Top-->
+
+    <!--Bottom-->
+
+
+
+
+</RelativeLayout>
