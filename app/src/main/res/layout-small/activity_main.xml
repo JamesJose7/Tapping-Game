@@ -1,84 +1,544 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context=".MainActivity"
-                android:paddingLeft="3dp"
-                android:paddingBottom="3dp"
-                android:paddingRight="3dp"
-                android:paddingTop="3dp"
-                android:background="#fff">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="40dp"
+    tools:context=".MainActivity">
 
     <!--Center-->
     <Button
-        android:layout_width="48dp"
-        android:layout_height="78dp"
+        android:layout_width="47dp"
+        android:layout_height="72dp"
         android:background="#40000000"
         android:id="@+id/cellCenter"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true"
+        android:onClick="onClick"/>
+
 
     <!--Left-->
 
     <Button
-        android:layout_width="48dp"
-        android:layout_height="78dp"
+        android:layout_width="47dp"
+        android:layout_height="72dp"
         android:background="#40000000"
         android:id="@+id/cellLeft1"
-        android:layout_marginRight="3dp"
+        android:layout_marginRight="1dp"
         android:layout_toLeftOf="@id/cellCenter"
-        android:layout_alignTop="@id/cellCenter"/>
+        android:layout_alignTop="@id/cellCenter"
+        android:onClick="onClick"/>
 
     <Button
-        android:layout_width="48dp"
-        android:layout_height="78dp"
+        android:layout_width="47dp"
+        android:layout_height="72dp"
         android:background="#40000000"
         android:id="@+id/cellLeft2"
-        android:layout_marginRight="3dp"
+        android:layout_marginRight="1dp"
         android:layout_toLeftOf="@id/cellLeft1"
-        android:layout_alignTop="@id/cellLeft1"/>
+        android:layout_alignTop="@id/cellLeft1"
+        android:onClick="onClick"/>
 
     <Button
-        android:layout_width="48dp"
-        android:layout_height="78dp"
+        android:layout_width="47dp"
+        android:layout_height="72dp"
         android:background="#40000000"
         android:id="@+id/cellLeft3"
-        android:layout_marginRight="3dp"
+        android:layout_marginRight="1dp"
         android:layout_toLeftOf="@id/cellLeft2"
-        android:layout_alignTop="@id/cellLeft2"/>
+        android:layout_alignTop="@id/cellLeft2"
+        android:onClick="onClick"/>
 
     <!--Right-->
 
     <Button
-        android:layout_width="48dp"
-        android:layout_height="78dp"
+        android:layout_width="47dp"
+        android:layout_height="72dp"
         android:background="#40000000"
         android:id="@+id/cellRight1"
-        android:layout_marginLeft="3dp"
+        android:layout_marginLeft="1dp"
         android:layout_toRightOf="@id/cellCenter"
-        android:layout_alignTop="@id/cellCenter"/>
+        android:layout_alignTop="@id/cellCenter"
+        android:onClick="onClick"/>
 
     <Button
-        android:layout_width="48dp"
-        android:layout_height="78dp"
+        android:layout_width="47dp"
+        android:layout_height="72dp"
         android:background="#40000000"
         android:id="@+id/cellRight2"
-        android:layout_marginLeft="3dp"
+        android:layout_marginLeft="1dp"
         android:layout_toRightOf="@id/cellRight1"
-        android:layout_alignTop="@id/cellRight1"/>
+        android:layout_alignTop="@id/cellRight1"
+        android:onClick="onClick"/>
 
     <Button
-        android:layout_width="48dp"
-        android:layout_height="78dp"
+        android:layout_width="47dp"
+        android:layout_height="72dp"
         android:background="#40000000"
         android:id="@+id/cellRight3"
-        android:layout_marginLeft="3dp"
+        android:layout_marginLeft="1dp"
         android:layout_toRightOf="@id/cellRight2"
-        android:layout_alignTop="@id/cellRight2"/>
+        android:layout_alignTop="@id/cellRight2"
+        android:onClick="onClick"/>
 
     <!--Top-->
 
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellTop1"
+        android:layout_marginBottom="1dp"
+        android:layout_above="@id/cellCenter"
+        android:layout_alignLeft="@id/cellCenter"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellTop2"
+        android:layout_marginBottom="1dp"
+        android:layout_above="@id/cellTop1"
+        android:layout_alignLeft="@id/cellTop1"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellTop3"
+        android:layout_marginBottom="1dp"
+        android:layout_above="@id/cellTop2"
+        android:layout_alignLeft="@id/cellTop2"
+        android:onClick="onClick"/>
+
     <!--Bottom-->
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellBottom1"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/cellCenter"
+        android:layout_alignLeft="@id/cellCenter"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellBottom2"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/cellBottom1"
+        android:layout_alignLeft="@id/cellBottom1"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellBottom3"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/cellBottom2"
+        android:layout_alignLeft="@id/cellBottom2"
+        android:onClick="onClick"/>
+
+    <!--Top Left-->
+
+    <!--First Row -->
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellTopLeft01"
+        android:layout_marginBottom="1dp"
+        android:layout_above="@id/cellLeft1"
+        android:layout_alignLeft="@id/cellLeft1"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellTopLeft02"
+        android:layout_marginBottom="1dp"
+        android:layout_above="@id/cellLeft2"
+        android:layout_alignLeft="@id/cellLeft2"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellTopLeft03"
+        android:layout_marginBottom="1dp"
+        android:layout_above="@id/cellLeft3"
+        android:layout_alignLeft="@id/cellLeft3"
+        android:onClick="onClick"/>
+
+
+    <!--Second Row -->
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellTopLeft11"
+        android:layout_marginBottom="1dp"
+        android:layout_above="@id/cellTopLeft01"
+        android:layout_alignLeft="@id/cellTopLeft01"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellTopLeft12"
+        android:layout_marginBottom="1dp"
+        android:layout_above="@id/cellTopLeft02"
+        android:layout_alignLeft="@id/cellTopLeft02"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellTopLeft13"
+        android:layout_marginBottom="1dp"
+        android:layout_above="@id/cellTopLeft03"
+        android:layout_alignLeft="@id/cellTopLeft03"
+        android:onClick="onClick"/>
+
+    <!--Third Row -->
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellTopLeft21"
+        android:layout_marginBottom="1dp"
+        android:layout_above="@id/cellTopLeft11"
+        android:layout_alignLeft="@id/cellTopLeft11"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellTopLeft22"
+        android:layout_marginBottom="1dp"
+        android:layout_above="@id/cellTopLeft12"
+        android:layout_alignLeft="@id/cellTopLeft12"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellTopLeft23"
+        android:layout_marginBottom="1dp"
+        android:layout_above="@id/cellTopLeft13"
+        android:layout_alignLeft="@id/cellTopLeft13"
+        android:onClick="onClick"/>
+
+    <!--Top Right-->
+
+    <!--First Row -->
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellTopRight01"
+        android:layout_marginBottom="1dp"
+        android:layout_above="@id/cellRight1"
+        android:layout_alignLeft="@id/cellRight1"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellTopRight02"
+        android:layout_marginBottom="1dp"
+        android:layout_above="@id/cellRight2"
+        android:layout_alignLeft="@id/cellRight2"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellTopRight03"
+        android:layout_marginBottom="1dp"
+        android:layout_above="@id/cellRight3"
+        android:layout_alignLeft="@id/cellRight3"
+        android:onClick="onClick"/>
+
+
+    <!--Second Row -->
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellTopRight11"
+        android:layout_marginBottom="1dp"
+        android:layout_above="@id/cellTopRight01"
+        android:layout_alignLeft="@id/cellTopRight01"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellTopRight12"
+        android:layout_marginBottom="1dp"
+        android:layout_above="@id/cellTopRight02"
+        android:layout_alignLeft="@id/cellTopRight02"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellTopRight13"
+        android:layout_marginBottom="1dp"
+        android:layout_above="@id/cellTopRight03"
+        android:layout_alignLeft="@id/cellTopRight03"
+        android:onClick="onClick"/>
+
+    <!--Third Row -->
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellTopRight21"
+        android:layout_marginBottom="1dp"
+        android:layout_above="@id/cellTopRight11"
+        android:layout_alignLeft="@id/cellTopRight11"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellTopRight22"
+        android:layout_marginBottom="1dp"
+        android:layout_above="@id/cellTopRight12"
+        android:layout_alignLeft="@id/cellTopRight12"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellTopRight23"
+        android:layout_marginBottom="1dp"
+        android:layout_above="@id/cellTopRight13"
+        android:layout_alignLeft="@id/cellTopRight13"
+        android:onClick="onClick"/>
+
+    <!--Bottom Left-->
+
+    <!--First Row -->
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellBottomLeft01"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/cellLeft3"
+        android:layout_alignLeft="@id/cellLeft3"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellBottomLeft02"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/cellLeft2"
+        android:layout_alignLeft="@id/cellLeft2"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellBottomLeft03"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/cellLeft1"
+        android:layout_alignLeft="@id/cellLeft1"
+        android:onClick="onClick"/>
+
+
+    <!--Second Row -->
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellBottomLeft11"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/cellBottomLeft01"
+        android:layout_alignLeft="@id/cellBottomLeft01"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellBottomLeft12"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/cellBottomLeft02"
+        android:layout_alignLeft="@id/cellBottomLeft02"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellBottomLeft13"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/cellBottomLeft03"
+        android:layout_alignLeft="@id/cellBottomLeft03"
+        android:onClick="onClick"/>
+
+    <!--Third Row -->
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellBottomLeft21"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/cellBottomLeft11"
+        android:layout_alignLeft="@id/cellBottomLeft11"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellBottomLeft22"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/cellBottomLeft12"
+        android:layout_alignLeft="@id/cellBottomLeft12"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellBottomLeft23"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/cellBottomLeft13"
+        android:layout_alignLeft="@id/cellBottomLeft13"
+        android:onClick="onClick"/>
+
+    <!--Bottom Right-->
+
+    <!--First Row -->
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellBottomRight01"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/cellRight1"
+        android:layout_alignLeft="@id/cellRight1"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellBottomRight02"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/cellRight2"
+        android:layout_alignLeft="@id/cellRight2"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellBottomRight03"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/cellRight3"
+        android:layout_alignLeft="@id/cellRight3"
+        android:onClick="onClick"/>
+
+
+    <!--Second Row -->
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellBottomRight11"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/cellBottomRight01"
+        android:layout_alignLeft="@id/cellBottomRight01"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellBottomRight12"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/cellBottomRight02"
+        android:layout_alignLeft="@id/cellBottomRight02"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellBottomRight13"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/cellBottomRight03"
+        android:layout_alignLeft="@id/cellBottomRight03"
+        android:onClick="onClick"/>
+
+    <!--Third Row -->
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellBottomRight21"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/cellBottomRight11"
+        android:layout_alignLeft="@id/cellBottomRight11"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellBottomRight22"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/cellBottomRight12"
+        android:layout_alignLeft="@id/cellBottomRight12"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:background="#40000000"
+        android:id="@+id/cellBottomRight23"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/cellBottomRight13"
+        android:layout_alignLeft="@id/cellBottomRight13"
+        android:onClick="onClick"/>
 
 
 
