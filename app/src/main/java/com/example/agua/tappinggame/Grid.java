@@ -19,8 +19,21 @@ public class Grid {
         return mButtons[randomNumber];
     }
 
+    public boolean areButtonsVisible() {
+        boolean visible = false;
+        for (int i = 0; i < mButtons.length; i++) {
+            if (mButtons[i].getVisibility() == View.VISIBLE) {
+                visible = true;
+            }
+        }
+
+        return visible;
+    }
+
     public void setButtons(Button[] buttons) {
         mButtons = buttons;
     }
+
+
 
 }

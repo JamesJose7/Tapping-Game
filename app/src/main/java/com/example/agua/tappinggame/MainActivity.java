@@ -1,12 +1,11 @@
 package com.example.agua.tappinggame;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
-
-import java.util.Random;
+import android.widget.TextView;
 
 
 public class MainActivity extends Activity {
@@ -61,7 +60,13 @@ public class MainActivity extends Activity {
     public Button mTopRight22;
     public Button mTopRight23;
 
-    public Grid grid = new Grid();
+    public TextView mScoreTextView;
+
+    public Grid mGrid = new Grid();
+
+    private Handler mHandler = new Handler();
+
+    private int mScore = 0;
 
 
 
@@ -70,6 +75,9 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        mScoreTextView = (TextView) findViewById(R.id.scoreTextView);
 
         mCenter = (Button) findViewById(R.id.cellCenter);
         mLeft1 = (Button) findViewById(R.id.cellLeft1);
@@ -178,10 +186,51 @@ public class MainActivity extends Activity {
             buttons[i].setVisibility(View.INVISIBLE);
         }
 
-        grid.setButtons(buttons);
-        grid.getRandomButton().setVisibility(View.VISIBLE);
+        updateScore();
+        mGrid.setButtons(buttons);
+        displayTiles();
     }
 
+    //How many tiles are being displayed at once
+    public void displayTiles() {
+
+        callRandomTile();
+
+        if (mScore < 15) {
+            callRandomTile();
+        }
+
+        if (mScore >= 15 && mScore < 30) {
+            callRandomTile();
+        }
+    }
+
+    //Display a new Tile on the screen
+    public void callRandomTile() {
+        final Button button = mGrid.getRandomButton();
+        button.setVisibility(View.VISIBLE);
+
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (button.getVisibility() == View.VISIBLE) {
+                    button.setVisibility(View.INVISIBLE);
+                    mScore--;
+                    mScoreTextView.setText(mScore + "");
+                    if (!mGrid.areButtonsVisible()) {
+                        callRandomTile();
+                    }
+                }
+            }
+        }, 1500);
+
+    }
+
+    //Increase and display new score
+    public void updateScore() {
+        mScore++;
+        mScoreTextView.setText(mScore + "");
+    }
 
 
 
@@ -191,295 +240,344 @@ public class MainActivity extends Activity {
             case R.id.cellCenter:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellLeft1:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellLeft2:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellLeft3:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellRight1:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellRight2:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellRight3:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellTop1:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellTop2:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellTop3:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellBottom1:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellBottom2:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellBottom3:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellTopRight01:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellTopRight02:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellTopRight03:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellTopRight11:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellTopRight12:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellTopRight13:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellTopRight21:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellTopRight22:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellTopRight23:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellTopLeft01:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellTopLeft02:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellTopLeft03:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellTopLeft11:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellTopLeft12:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellTopLeft13:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellTopLeft21:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellTopLeft22:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellTopLeft23:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellBottomLeft01:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellBottomLeft02:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellBottomLeft03:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellBottomLeft11:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellBottomLeft12:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellBottomLeft13:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellBottomLeft21:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellBottomLeft22:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellBottomLeft23:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellBottomRight01:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellBottomRight02:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellBottomRight03:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellBottomRight11:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellBottomRight12:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellBottomRight13:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellBottomRight21:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellBottomRight22:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
             case R.id.cellBottomRight23:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                grid.getRandomButton().setVisibility(View.VISIBLE);
+                displayTiles();
+                updateScore();
                 break;
 
 
