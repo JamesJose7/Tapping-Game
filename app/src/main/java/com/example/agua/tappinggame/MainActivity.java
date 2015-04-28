@@ -6,6 +6,9 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 
 public class MainActivity extends Activity {
@@ -68,7 +71,7 @@ public class MainActivity extends Activity {
     private int mScore = 0;
     private int mLives = 1;
     private int mTilesLifeTime = 3000;
-    private int mMaxTiles = 3;
+    private int mTilesSpawnTime = 2000;
 
 
 
@@ -183,6 +186,7 @@ public class MainActivity extends Activity {
                 mTopRight23
         };
 
+
         String[] colorPalette = {"#D32F2F", "#FFEB3B"};
 
 
@@ -194,8 +198,8 @@ public class MainActivity extends Activity {
         mGrid.setColorPalette(colorPalette);
         mGrid.setButtons(buttons);
 
-        updateScore();
         displayTiles();
+        updateScore();
     }
 
     //How many tiles are being displayed at once
@@ -203,43 +207,69 @@ public class MainActivity extends Activity {
 
         callRandomTile();
 
-        if (mScore < 15) {
-            callRandomTile();
+        if (mScore > 5) {
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    callRandomTile();
+                }
+            }, 100);
         }
 
-        if (mScore >= 15) {
-            callRandomTile();
+        if (mScore > 12) {
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    callRandomTile();
+                }
+            }, 200);
+        }
+
+        if (mScore > 22) {
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    callRandomTile();
+                }
+            }, 300);
         }
 
         if (mScore == 15) {
-            mTilesLifeTime = 2200;
+            mTilesLifeTime = 2500;
+            mTilesSpawnTime = 1500;
         } else if (mScore == 30) {
-            mTilesLifeTime = 1500;
+            mTilesLifeTime = 2200;
+            mTilesSpawnTime = 1000;
         } else if (mScore == 40) {
-            mTilesLifeTime = 500;
+            mTilesLifeTime = 2000;
+            mTilesSpawnTime = 1000;
         }
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                displayTiles();
+            }
+        }, mTilesSpawnTime);
     }
 
     //Display a new Tile on the screen
     public void callRandomTile() {
         final Button button = mGrid.getRandomButton();
 
-        if (mGrid.getAmountOfDisplayedButtons() <= mMaxTiles) {
-            button.setVisibility(View.VISIBLE);
+        button.setVisibility(View.VISIBLE);
 
-            mHandler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    if (button.getVisibility() == View.VISIBLE) {
-                        button.setVisibility(View.INVISIBLE);
-                        updateLives();
-                        if (!mGrid.areButtonsVisible()) {
-                            callRandomTile();
-                        }
-                    }
+
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (button.getVisibility() == View.VISIBLE) {
+                    button.setVisibility(View.INVISIBLE);
+                    updateLives();
                 }
-            }, 1500);
-        }
+            }
+        }, mTilesLifeTime);
+
+
     }
 
     //Increase and display new score
@@ -262,343 +292,294 @@ public class MainActivity extends Activity {
             case R.id.cellCenter:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellLeft1:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellLeft2:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellLeft3:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellRight1:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellRight2:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellRight3:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellTop1:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellTop2:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellTop3:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellBottom1:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellBottom2:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellBottom3:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellTopRight01:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellTopRight02:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellTopRight03:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellTopRight11:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellTopRight12:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellTopRight13:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellTopRight21:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellTopRight22:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellTopRight23:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellTopLeft01:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellTopLeft02:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellTopLeft03:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellTopLeft11:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellTopLeft12:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellTopLeft13:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellTopLeft21:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellTopLeft22:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellTopLeft23:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellBottomLeft01:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellBottomLeft02:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellBottomLeft03:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellBottomLeft11:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellBottomLeft12:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellBottomLeft13:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellBottomLeft21:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellBottomLeft22:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellBottomLeft23:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellBottomRight01:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellBottomRight02:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellBottomRight03:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellBottomRight11:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellBottomRight12:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellBottomRight13:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellBottomRight21:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellBottomRight22:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 
             case R.id.cellBottomRight23:
                 //view.setBackgroundColor(Color.parseColor("#ffffff"));
                 view.setVisibility(View.INVISIBLE);
-                displayTiles();
                 updateScore();
                 break;
 

@@ -35,6 +35,7 @@ public class Grid {
         return visible;
     }
 
+
     public int getAmountOfDisplayedButtons() {
         int buttonsDisplayed = 0;
         for (int i = 0; i < mButtons.length; i++) {

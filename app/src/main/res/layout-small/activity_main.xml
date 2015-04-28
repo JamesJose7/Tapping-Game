@@ -4,54 +4,67 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="40dp"
         android:orientation="horizontal"
         android:layout_alignParentTop="true"
-        android:background="#FF9800"
-        android:weightSum="100">
+        android:background="#FF9800">
 
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="15dp"
+            android:background="@drawable/gradient_inner_shadow"
+            android:layout_alignParentBottom="true"/>
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="50">
+                android:layout_alignParentTop="true"
+                android:weightSum="100">
 
-                <TextView
+
+                <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/livesTextView"
-                    android:text="Lives"
-                    android:gravity="center_horizontal"
-                    android:textSize="20sp"/>
+                    android:layout_height="fill_parent"
+                    android:layout_weight="50">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/livesTextView"
+                        android:text="Lives"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="3dp"
+                        android:textSize="30sp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="50">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/scoreTextView"
+                        android:text="Score"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="3dp"
+                        android:textSize="30sp"/>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="50">
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/scoreTextView"
-                    android:text="Score"
-                    android:gravity="center_horizontal"
-                    android:textSize="20sp"/>
-
         </LinearLayout>
 
+
+
         <!--Bottom Shadow -->
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="10dp"
-            android:background="@drawable/gradient_inner_shadow"
-            android:layout_gravity="bottom"/>
-    </LinearLayout>
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_marginTop="40dp"
@@ -596,6 +609,8 @@
         android:onClick="onClick"/>
 
      </RelativeLayout>
+
+
 
 
 
