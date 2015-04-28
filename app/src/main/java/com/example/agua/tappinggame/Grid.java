@@ -30,6 +30,17 @@ public class Grid {
         return visible;
     }
 
+    public int getAmountOfDisplayedButtons() {
+        int buttonsDisplayed = 0;
+        for (int i = 0; i < mButtons.length; i++) {
+            if (mButtons[i].getVisibility() == View.VISIBLE) {
+                buttonsDisplayed++;
+            }
+        }
+
+        return buttonsDisplayed;
+    }
+
     public void setButtons(Button[] buttons) {
         mButtons = buttons;
     }

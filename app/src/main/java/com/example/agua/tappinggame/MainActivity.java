@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
+    public Handler mHandler = new Handler();
+
     public Button mCenter;
     public Button mLeft1;
     public Button mLeft2;
@@ -60,13 +62,13 @@ public class MainActivity extends Activity {
     public Button mTopRight22;
     public Button mTopRight23;
 
-    public TextView mScoreTextView;
-
     public Grid mGrid = new Grid();
 
-    private Handler mHandler = new Handler();
-
+    public TextView mScoreTextView;
     private int mScore = 0;
+    private int mLives = 1;
+    private int mTilesLifeTime = 3000;
+    private int mMaxTiles = 3;
 
 
 
@@ -200,36 +202,51 @@ public class MainActivity extends Activity {
             callRandomTile();
         }
 
-        if (mScore >= 15 && mScore < 30) {
+        if (mScore >= 15) {
             callRandomTile();
+        }
+
+        if (mScore == 15) {
+            mTilesLifeTime = 2200;
+        } else if (mScore == 30) {
+            mTilesLifeTime = 1500;
+        } else if (mScore == 40) {
+            mTilesLifeTime = 500;
         }
     }
 
     //Display a new Tile on the screen
     public void callRandomTile() {
         final Button button = mGrid.getRandomButton();
-        button.setVisibility(View.VISIBLE);
 
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (button.getVisibility() == View.VISIBLE) {
-                    button.setVisibility(View.INVISIBLE);
-                    mScore--;
-                    mScoreTextView.setText(mScore + "");
-                    if (!mGrid.areButtonsVisible()) {
-                        callRandomTile();
+        if (mGrid.getAmountOfDisplayedButtons() <= mMaxTiles) {
+            button.setVisibility(View.VISIBLE);
+
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (button.getVisibility() == View.VISIBLE) {
+                        button.setVisibility(View.INVISIBLE);
+                        updateLives();
+                        if (!mGrid.areButtonsVisible()) {
+                            callRandomTile();
+                        }
                     }
                 }
-            }
-        }, 1500);
-
+            }, 1500);
+        }
     }
 
     //Increase and display new score
     public void updateScore() {
         mScore++;
         mScoreTextView.setText(mScore + "");
+    }
+
+    public void updateLives() {
+        TextView livesTextView = (TextView) findViewById(R.id.livesTextView);
+        mLives--;
+        livesTextView.setText(mLives + "");
     }
 
 
