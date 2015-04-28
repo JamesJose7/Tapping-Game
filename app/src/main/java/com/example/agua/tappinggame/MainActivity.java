@@ -69,7 +69,7 @@ public class MainActivity extends Activity {
 
     public TextView mScoreTextView;
     private int mScore = 0;
-    private int mLives = 1;
+    private int mLives = 8;
     private int mTilesLifeTime = 3000;
     private int mTilesSpawnTime = 2000;
 
@@ -187,7 +187,7 @@ public class MainActivity extends Activity {
         };
 
 
-        String[] colorPalette = {"#D32F2F", "#FFEB3B"};
+        String[] colorPalette = {"#D32F2F", "#FFEB3B", "#FFEB3B"};
 
 
         for (int i = 0; i < buttons.length; i++) {
@@ -207,13 +207,13 @@ public class MainActivity extends Activity {
 
         callRandomTile();
 
-        if (mScore > 5) {
+        if (mScore > 3) {
             mHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     callRandomTile();
                 }
-            }, 100);
+            }, 300);
         }
 
         if (mScore > 12) {
@@ -222,7 +222,7 @@ public class MainActivity extends Activity {
                 public void run() {
                     callRandomTile();
                 }
-            }, 200);
+            }, 500);
         }
 
         if (mScore > 22) {
@@ -231,7 +231,7 @@ public class MainActivity extends Activity {
                 public void run() {
                     callRandomTile();
                 }
-            }, 300);
+            }, 700);
         }
 
         if (mScore == 15) {
@@ -256,20 +256,20 @@ public class MainActivity extends Activity {
     public void callRandomTile() {
         final Button button = mGrid.getRandomButton();
 
-        button.setVisibility(View.VISIBLE);
 
+        if(button.getVisibility() == View.INVISIBLE) {
+            button.setVisibility(View.VISIBLE);
 
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (button.getVisibility() == View.VISIBLE) {
-                    button.setVisibility(View.INVISIBLE);
-                    updateLives();
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (button.getVisibility() == View.VISIBLE) {
+                        button.setVisibility(View.INVISIBLE);
+                        updateLives();
+                    }
                 }
-            }
-        }, mTilesLifeTime);
-
-
+            }, mTilesLifeTime);
+        }
     }
 
     //Increase and display new score
