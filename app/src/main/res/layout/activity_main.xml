@@ -9,15 +9,15 @@
         android:layout_height="40dp"
         android:orientation="horizontal"
         android:layout_alignParentTop="true"
-        tools:background="#0f0"
+        android:background="#FF9800"
         android:weightSum="100">
+
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_weight="50"
-            >
+            android:layout_weight="50">
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -44,12 +44,20 @@
                     android:textSize="20sp"/>
 
             </LinearLayout>
+
+        <!--Bottom Shadow -->
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="10dp"
+            android:background="@drawable/gradient_inner_shadow"
+            android:layout_gravity="bottom"/>
     </LinearLayout>
 
     <RelativeLayout
         android:layout_marginTop="40dp"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:background="#cc4cAf50"
         android:id="@+id/RelativeLayout">
 
     <!--Center-->

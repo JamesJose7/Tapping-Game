@@ -183,13 +183,18 @@ public class MainActivity extends Activity {
                 mTopRight23
         };
 
+        String[] colorPalette = {"#a04d7f17", "#a06bb120"};
+
 
         for (int i = 0; i < buttons.length; i++) {
             buttons[i].setVisibility(View.INVISIBLE);
         }
 
-        updateScore();
+
+        mGrid.setColorPalette(colorPalette);
         mGrid.setButtons(buttons);
+
+        updateScore();
         displayTiles();
     }
 

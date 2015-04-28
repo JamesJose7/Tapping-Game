@@ -2,8 +2,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="50dp"
     tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:background="#FF9800"
+        android:weightSum="100">
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="50">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/livesTextView"
+                android:text="Lives"
+                android:gravity="center_horizontal"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="50">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/scoreTextView"
+                android:text="Score"
+                android:gravity="center_horizontal"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+
+        <!--Bottom Shadow -->
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="10dp"
+            android:background="@drawable/gradient_inner_shadow"
+            android:layout_gravity="bottom"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="60dp"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#cc4cAf50"
+        android:id="@+id/RelativeLayout">
 
     <!--Center-->
     <Button
@@ -539,6 +594,8 @@
         android:layout_below="@id/cellBottomRight13"
         android:layout_alignLeft="@id/cellBottomRight13"
         android:onClick="onClick"/>
+
+        </RelativeLayout>
 
 
 

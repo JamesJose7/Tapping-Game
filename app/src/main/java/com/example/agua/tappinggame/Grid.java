@@ -1,5 +1,7 @@
 package com.example.agua.tappinggame;
 
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.Button;
 
@@ -11,11 +13,14 @@ import java.util.Random;
 public class Grid {
 
     private Button[] mButtons;
+    private String[] mColorPalette;
 
     public Button getRandomButton() {
         Random randomGenerator = new Random();
         int randomNumber = randomGenerator.nextInt(mButtons.length);
+        int randomColor = randomGenerator.nextInt(mColorPalette.length);
 
+        mButtons[randomNumber].setBackgroundColor(Color.parseColor(mColorPalette[randomColor]));
         return mButtons[randomNumber];
     }
 
@@ -43,6 +48,10 @@ public class Grid {
 
     public void setButtons(Button[] buttons) {
         mButtons = buttons;
+    }
+
+    public void setColorPalette(String[] colorPalette) {
+        mColorPalette = colorPalette;
     }
 
 
