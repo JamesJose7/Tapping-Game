@@ -183,7 +183,7 @@ public class MainActivity extends Activity {
                 mTopRight23
         };
 
-        String[] colorPalette = {"#a04d7f17", "#a06bb120"};
+        String[] colorPalette = {"#D32F2F", "#FFEB3B"};
 
 
         for (int i = 0; i < buttons.length; i++) {
