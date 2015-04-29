@@ -31,7 +31,8 @@
                     android:orientation="horizontal"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:layout_weight="30">
+                    android:layout_weight="20"
+                    android:padding="3dp">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -89,30 +90,20 @@
                         android:layout_weight="20"
                         android:src="@drawable/heart"/>
 
-                    <!--<TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:id="@+id/livesTextView"
-                        android:text="Lives"
-                        android:gravity="center_horizontal"
-                        android:paddingTop="3dp"
-                        android:textSize="30sp"/>-->
-
                 </LinearLayout>
 
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:layout_weight="70">
+                    android:layout_weight="80">
 
                     <TextView
                         android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/scoreTextView"
-                        android:text="Score"
-                        android:gravity="center_horizontal"
-                        android:paddingTop="3dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/scoreDisplay"
+                        android:text="0"
+                        android:gravity="center_vertical|center_horizontal"
                         android:textSize="30sp"/>
 
             </LinearLayout>
