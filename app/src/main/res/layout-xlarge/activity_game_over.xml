@@ -14,16 +14,25 @@
         android:text="Game Over"
         android:textSize="50sp"
         android:id="@+id/gameOverTextView"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"/>
+        android:layout_above="@id/scoreGameOver"
+        android:layout_marginBottom="90dp"/>
 
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Reset"
-        android:id="@+id/resetButton"
-        android:layout_alignParentBottom="true"
+        android:id="@+id/scoreGameOver"
+        android:text="0"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="150dp"/>
+        android:layout_centerVertical="true"
+        android:textSize="70sp"/>
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/resetButton"
+        android:background="@drawable/refresh62"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:layout_below="@id/scoreGameOver"/>
 </RelativeLayout>
