@@ -2,6 +2,7 @@ package com.example.agua.tappinggame;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -76,12 +78,11 @@ public class MainActivity extends Activity {
     private int mLives = 8;
     private int mTilesLifeTime = 3000;
     private int mTilesSpawnTime = 2000;
-    private Drawable badTileDrawable;
-    final int badTile = -855681246;
-    ColorDrawable buttonColorBad;
 
-
-
+    private ColorDrawable mBadTileDrawable = new ColorDrawable(Color.parseColor("#FF5722"));
+    private ColorDrawable mRedTileDrawable = new ColorDrawable(Color.parseColor("#D32F2F"));
+    private ColorDrawable mYellowTileDrawable = new ColorDrawable(Color.parseColor("#FFEB3B"));
+    private ColorDrawable[] tiles = {mBadTileDrawable, mRedTileDrawable, mYellowTileDrawable};
 
 
     @Override
@@ -195,15 +196,12 @@ public class MainActivity extends Activity {
         };
 
 
-        String[] colorPalette = {"#D32F2F", "#FFEB3B", "#ccFF5722"};
-
-
         for (int i = 0; i < buttons.length; i++) {
             buttons[i].setVisibility(View.INVISIBLE);
         }
 
 
-        mGrid.setColorPalette(colorPalette);
+        mGrid.setColorPalette(tiles);
         mGrid.setButtons(buttons);
 
         displayTiles();
@@ -264,9 +262,6 @@ public class MainActivity extends Activity {
     public void callRandomTile() {
         final Button button = mGrid.getRandomButton();
 
-        final ColorDrawable buttonColor = (ColorDrawable) button.getBackground();
-        buttonColorBad = (ColorDrawable) button.getBackground();
-
         if(button.getVisibility() == View.INVISIBLE) {
             button.setVisibility(View.VISIBLE);
 
@@ -275,9 +270,10 @@ public class MainActivity extends Activity {
                 public void run() {
                     if (button.getVisibility() == View.VISIBLE) {
                         button.setVisibility(View.INVISIBLE);
-                        if (buttonColor.getColor() == badTile) {
+                        if (button.getBackground() == mBadTileDrawable) {
                             //Toast.makeText(MainActivity.this, "Correct", Toast.LENGTH_LONG).show();
-                            updateScore();
+                            //updateScore();
+                            Log.v(MainActivity.class.getSimpleName(), "badTile not pressed");
                         } else {
                             updateLives();
                         }
@@ -296,14 +292,37 @@ public class MainActivity extends Activity {
     }
 
     public void updateLives() {
-        TextView livesTextView = (TextView) findViewById(R.id.livesTextView);
         mLives--;
-        livesTextView.setText(mLives + "");
-
-        if (mLives == 0) {
-            Intent intent = new Intent(this, GameOverActivity.class);
-            finish();
-            startActivity(intent);
+        switch (mLives) {
+            case 7:
+                findViewById(R.id.heart8).setVisibility(View.INVISIBLE);
+                break;
+            case 6:
+                findViewById(R.id.heart7).setVisibility(View.INVISIBLE);
+                break;
+            case 5:
+                findViewById(R.id.heart6).setVisibility(View.INVISIBLE);
+                break;
+            case 4:
+                findViewById(R.id.heart5).setVisibility(View.INVISIBLE);
+                break;
+            case 3:
+                findViewById(R.id.heart4).setVisibility(View.INVISIBLE);
+                break;
+            case 2:
+                findViewById(R.id.heart3).setVisibility(View.INVISIBLE);
+                break;
+            case 1:
+                findViewById(R.id.heart2).setVisibility(View.INVISIBLE);
+                break;
+            case 0:
+                findViewById(R.id.heart1).setVisibility(View.INVISIBLE);
+                Intent intent = new Intent(this, GameOverActivity.class);
+                finish();
+                startActivity(intent);
+                break;
+            default:
+                break;
         }
     }
 
@@ -312,297 +331,444 @@ public class MainActivity extends Activity {
 
         switch (view.getId()) {
             case R.id.cellCenter:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellLeft1:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellLeft2:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellLeft3:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellRight1:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellRight2:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellRight3:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellTop1:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellTop2:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellTop3:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellBottom1:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellBottom2:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellBottom3:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellTopRight01:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellTopRight02:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellTopRight03:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellTopRight11:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellTopRight12:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellTopRight13:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellTopRight21:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellTopRight22:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellTopRight23:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellTopLeft01:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellTopLeft02:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellTopLeft03:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellTopLeft11:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellTopLeft12:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellTopLeft13:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellTopLeft21:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellTopLeft22:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellTopLeft23:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellBottomLeft01:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellBottomLeft02:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellBottomLeft03:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellBottomLeft11:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellBottomLeft12:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellBottomLeft13:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellBottomLeft21:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellBottomLeft22:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellBottomLeft23:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellBottomRight01:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellBottomRight02:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellBottomRight03:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellBottomRight11:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellBottomRight12:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellBottomRight13:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellBottomRight21:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellBottomRight22:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
             case R.id.cellBottomRight23:
-                //view.setBackgroundColor(Color.parseColor("#ffffff"));
+                if (view.getBackground() == mBadTileDrawable) {
+                    updateLives();
+                } else {
+                    updateScore();
+                }
                 view.setVisibility(View.INVISIBLE);
-                updateScore();
                 break;
 
 

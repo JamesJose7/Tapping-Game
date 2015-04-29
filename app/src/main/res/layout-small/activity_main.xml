@@ -25,20 +25,78 @@
                 android:weightSum="100">
 
 
+
+
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:layout_weight="50">
+                    android:layout_weight="30">
 
-                    <TextView
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/heart1"
+                        android:layout_weight="20"
+                        android:src="@drawable/heart"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/heart2"
+                        android:layout_weight="20"
+                        android:src="@drawable/heart"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/heart3"
+                        android:layout_weight="20"
+                        android:src="@drawable/heart"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/heart4"
+                        android:layout_weight="20"
+                        android:src="@drawable/heart"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/heart5"
+                        android:layout_weight="20"
+                        android:src="@drawable/heart"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/heart6"
+                        android:layout_weight="20"
+                        android:src="@drawable/heart"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/heart7"
+                        android:layout_weight="20"
+                        android:src="@drawable/heart"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/heart8"
+                        android:layout_weight="20"
+                        android:src="@drawable/heart"/>
+
+                    <!--<TextView
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:id="@+id/livesTextView"
                         android:text="Lives"
                         android:gravity="center_horizontal"
                         android:paddingTop="3dp"
-                        android:textSize="30sp"/>
+                        android:textSize="30sp"/>-->
 
                 </LinearLayout>
 
@@ -46,7 +104,7 @@
                     android:orientation="horizontal"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:layout_weight="50">
+                    android:layout_weight="70">
 
                     <TextView
                         android:layout_width="fill_parent"

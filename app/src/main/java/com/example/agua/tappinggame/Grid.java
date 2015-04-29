@@ -13,14 +13,15 @@ import java.util.Random;
 public class Grid {
 
     private Button[] mButtons;
-    private String[] mColorPalette;
+    private Drawable[] mColorPalette;
 
     public Button getRandomButton() {
         Random randomGenerator = new Random();
         int randomNumber = randomGenerator.nextInt(mButtons.length);
         int randomColor = randomGenerator.nextInt(mColorPalette.length);
 
-        mButtons[randomNumber].setBackgroundColor(Color.parseColor(mColorPalette[randomColor]));
+        mButtons[randomNumber].setBackground(mColorPalette[randomColor]);
+
         return mButtons[randomNumber];
     }
 
@@ -51,7 +52,7 @@ public class Grid {
         mButtons = buttons;
     }
 
-    public void setColorPalette(String[] colorPalette) {
+    public void setColorPalette(Drawable[] colorPalette) {
         mColorPalette = colorPalette;
     }
 
