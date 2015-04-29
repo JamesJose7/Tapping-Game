@@ -235,6 +235,15 @@ public class MainActivity extends Activity {
             }, 700);
         }
 
+        if (mScore > 70) {
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                  callRandomTile();
+                }
+            }, 900);
+        }
+
         if (mScore == 15) {
             mTilesLifeTime = 2500;
             mTilesSpawnTime = 1500;
