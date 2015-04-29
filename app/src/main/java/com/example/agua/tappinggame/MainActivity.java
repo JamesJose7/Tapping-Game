@@ -1,8 +1,12 @@
 package com.example.agua.tappinggame;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -72,6 +76,10 @@ public class MainActivity extends Activity {
     private int mLives = 8;
     private int mTilesLifeTime = 3000;
     private int mTilesSpawnTime = 2000;
+    private Drawable badTileDrawable;
+    final int badTile = -855681246;
+    ColorDrawable buttonColorBad;
+
 
 
 
@@ -187,7 +195,7 @@ public class MainActivity extends Activity {
         };
 
 
-        String[] colorPalette = {"#D32F2F", "#FFEB3B", "#FFEB3B"};
+        String[] colorPalette = {"#D32F2F", "#FFEB3B", "#ccFF5722"};
 
 
         for (int i = 0; i < buttons.length; i++) {
@@ -256,6 +264,8 @@ public class MainActivity extends Activity {
     public void callRandomTile() {
         final Button button = mGrid.getRandomButton();
 
+        final ColorDrawable buttonColor = (ColorDrawable) button.getBackground();
+        buttonColorBad = (ColorDrawable) button.getBackground();
 
         if(button.getVisibility() == View.INVISIBLE) {
             button.setVisibility(View.VISIBLE);
@@ -265,12 +275,19 @@ public class MainActivity extends Activity {
                 public void run() {
                     if (button.getVisibility() == View.VISIBLE) {
                         button.setVisibility(View.INVISIBLE);
-                        updateLives();
+                        if (buttonColor.getColor() == badTile) {
+                            //Toast.makeText(MainActivity.this, "Correct", Toast.LENGTH_LONG).show();
+                            updateScore();
+                        } else {
+                            updateLives();
+                        }
                     }
                 }
             }, mTilesLifeTime);
         }
     }
+
+
 
     //Increase and display new score
     public void updateScore() {
@@ -282,8 +299,13 @@ public class MainActivity extends Activity {
         TextView livesTextView = (TextView) findViewById(R.id.livesTextView);
         mLives--;
         livesTextView.setText(mLives + "");
-    }
 
+        if (mLives == 0) {
+            Intent intent = new Intent(this, GameOverActivity.class);
+            finish();
+            startActivity(intent);
+        }
+    }
 
 
     public void onClick(View view) {
