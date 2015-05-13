@@ -18,14 +18,62 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="75dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/scoreGameOver"
-        android:text="0"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:textSize="70sp"/>
+        android:weightSum="100"
+        android:id="@+id/scoresLayout"
+        android:layout_below="@id/gameOverTextView"
+        android:layout_marginTop="80dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="50"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Score"
+                android:textSize="30sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/scoreGameOver"
+                android:text="0"
+                android:textSize="50sp"
+                android:layout_marginTop="10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="50"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="High Score"
+                android:textSize="30sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/highScore"
+                android:text="0"
+                android:textSize="50sp"
+                android:layout_marginTop="10dp"/>
+        </LinearLayout>
+    </LinearLayout>
 
     <Button
         android:layout_width="50dp"
@@ -33,6 +81,6 @@
         android:id="@+id/resetButton"
         android:background="@drawable/refresh62"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:layout_below="@id/scoreGameOver"/>
+        android:layout_marginTop="60dp"
+        android:layout_below="@id/scoresLayout"/>
 </RelativeLayout>
