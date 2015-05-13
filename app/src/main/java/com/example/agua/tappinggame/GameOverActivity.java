@@ -8,9 +8,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 
 public class GameOverActivity extends Activity {
+
+    private int mPreviousScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +30,14 @@ public class GameOverActivity extends Activity {
                 startActivity(intent);
             }
         });
+
+        //Get intent extras
+        Intent intent = getIntent();
+        mPreviousScore  = intent.getIntExtra("previousScore", 0);
+
+        TextView previousScoreTextView = (TextView) findViewById(R.id.scoreGameOver);
+        previousScoreTextView.setText(mPreviousScore + "");
+
     }
 
 

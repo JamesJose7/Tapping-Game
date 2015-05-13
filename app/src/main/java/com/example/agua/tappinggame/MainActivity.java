@@ -321,13 +321,22 @@ public class MainActivity extends Activity {
                 break;
             case 0:
                 findViewById(R.id.heart1).setVisibility(View.INVISIBLE);
-                Intent intent = new Intent(this, GameOverActivity.class);
-                finish();
-                startActivity(intent);
+
+                //YOU LOST!
+                startGameOverActivity();
                 break;
             default:
                 break;
         }
+    }
+
+    public void startGameOverActivity() {
+
+        Intent intent = new Intent(this, GameOverActivity.class);
+        finish();
+        intent.putExtra("previousScore", mScore);
+        startActivity(intent);
+
     }
 
 
